@@ -1,0 +1,42 @@
+{% extends 'allposts/base.html'%}
+
+{% block body %}
+  <div class="main2">
+    <h1>Specificiation for: {{selected_car.model}}, {{selected_car.year}} model</h1>
+    <table class="post_table" style="width:100%">
+    <tr><td><b>Car Model</b></td> <td>{{selected_car.model}}</td></tr>
+    <tr><td><b>Year Model</b></td> <td>{{selected_car.year}}</td></tr>
+    <tr><td><b>Car Make</b></td> <td>{{selected_car.make}}</td></tr>
+    <tr><td><b>Bolt Pattern</b></td> <td>{{selected_car.bolt_pattern}}</td></tr>
+    <tr><td><b>Offset</b></td> <td>{{selected_car.offset}}</td></tr>
+
+    </table>
+
+    <h1>Listing</h1>
+        
+    <table class="post_table" style="width:100%">
+      <tr id="post_table_header">
+        <th>Rim Model</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Seller name</th>
+        <th>Image</th>
+      </tr>
+      
+      
+        {% for listing in matchedListing %}
+        <tr class="singlepost">
+            <td><a href="/allposts/{{listing.listing_id}}/">{{listing.get_rim_str}}</a></td>
+            <td>${{listing.price}}</td>
+            <td>{{listing.quantity}}</td>
+            <td>{{listing.seller_name}}</td>
+            <td><img src="{{listing.image}}" alt="tire image" style="width:px50;height:50px"></td>
+        {% endfor %}
+    </table>  
+
+
+    </div>
+
+    
+{% endblock %}
+

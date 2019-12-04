@@ -1,0 +1,34 @@
+{% extends 'allposts/base.html'%}
+
+{% block body %}
+
+  <div class="main2">
+
+    <table class="post_table" style="width:100%">
+
+    <img src="{{listing.image}}" alt="tire image" style="width:px150;height:150px">
+
+    <tr><td><b>Rim Model</b></td> <td>{{listing.get_rim_str}}</td></tr>
+    <tr><td><b>Price</b></td> <td>{{listing.price}}</td></tr>
+    <tr><td><b>Quantity</b></td> <td>{{listing.quantity}}</td></tr>
+    <tr><td><b>Condition</b></td> <td>{{listing.condition}}</td></tr>
+    <tr><td><b>Seller Name</b></td> <td>{{listing.seller_name}}</td></tr>
+    <tr><td><b>Seller Contact</b></td> <td>{{listing.seller_phone}}</td></tr>
+    <tr><td><b>Location</b></td> <td>{{listing.location}}</td></tr>
+    </table>
+    <br>
+    <br>
+    <h1 id="specific">Specificiations</h3>
+    <table class="post_table" style="width:100%">
+    <tr><td><b>Diameter</b></td> <td>{{rim.diameter}}</td></tr>
+    <tr><td><b>Width</b></td> <td>{{rim.width}}</td></tr>
+    <tr><td><b>Bolt_pattern</b></td> <td>{{rim.bolt_pattern}}</td></tr>
+    <tr><td><b>Offset</b></td> <td>{{rim.offset}}</td></tr>
+    <tr><td><b>Manufacturer</b></td> <td>{{rim.get_manufacturer_str}}</td></tr>
+    <tr><td><b>Manufacturer's Website</b></td> <td><a href="{{manufacturer.website}}">{{manufacturer.website}}</a></td></tr>
+    </table>
+  </div>
+{% endblock %}
+
+ 
+

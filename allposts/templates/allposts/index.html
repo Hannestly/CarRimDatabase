@@ -1,0 +1,64 @@
+<!-- Loads the path to your static files-->
+{% extends 'allposts/base.html'%}
+
+{% block body %}
+  <div class="main2">
+
+    <table class="post_table" style="width:100%">
+      <tr id="post_table_header">
+        <th>Rim Model</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Seller name</th>
+        <th>Image</th>
+      </tr>
+      
+      <form  action='/allposts/filter/'method="post">
+        {% csrf_token %}
+          <h1>Filter posts</h1>
+          <select selected="None" name="rim_model">
+          <option selected="selected" disabled>Rim Model</option>
+          {% for rim in all_rim %}
+            <option> {{rim.rim_model}}</option>
+          {% endfor %}
+          </select>
+        
+          <select selected="None" name="bolt_pattern">
+          <option selected="selected" disabled>Bolt Pattern</option>
+          {% for rim in all_rim %}
+            <option> {{rim.bolt_pattern}}</option>
+          {% endfor %}
+          </select>
+
+          <select selected="None" name="manufacturer">
+          <option selected="selected" disabled>Manufacturer</option>
+          {% for manufacturer in all_manufacturer %}
+            <option> {{manufacturer.name}}</option>
+          {% endfor %}
+          </select>
+          
+          <input type="text" name="Sellername" placeholder="Seller Name">
+          <br>
+          <input type='submit' value="Search">
+    </form>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      
+        {% for listing in all_listings %}
+        <tr class="singlepost">
+            <td><a href="/allposts/{{listing.listing_id}}/">{{listing.get_rim_str}}</a></td>
+            <td>${{listing.price}}</td>
+            <td>{{listing.quantity}}</td>
+            <td>{{listing.seller_name}}</td>
+            <td><img src="{{listing.image}}" alt="tire image" style="width:px50;height:50px"></td>
+        {% endfor %}
+    </table>  
+
+  </div>
+{% endblock %}
+
+
+

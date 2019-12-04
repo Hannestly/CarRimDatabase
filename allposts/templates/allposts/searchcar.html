@@ -1,0 +1,34 @@
+{% extends 'allposts/base.html'%}
+
+{% block body %}
+  <div class="main2">
+
+    <h1>Select Car detail</h1>
+    
+    <form  action='/allposts/searchcar/search/'method="post">
+    {% csrf_token %}
+      <select name="carmake">
+      <option selected="selected" disabled>Make</option>
+      {% for car in object_list %}
+        <option> {{car.make}}</option>
+      {% endfor %}
+      </select>
+
+      <select name="caryear">
+      <option selected="selected" disabled>Year</option>
+      {% for car in object_list %}
+        <option> {{car.year}}</option>
+      {% endfor %}
+      </select>
+
+      <select name="carmodel">
+      <option selected="selected" disabled>Model</option>
+      {% for car in object_list %}
+        <option> {{car.model}}</option>
+      {% endfor %}
+      </select>
+      <input type='submit' value="Select">
+    </form>
+
+  </div>
+{% endblock %}

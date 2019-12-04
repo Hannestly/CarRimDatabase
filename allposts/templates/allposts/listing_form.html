@@ -1,0 +1,14 @@
+{% extends 'allposts/base.html'%}
+
+{% block body %}
+
+<div class="main2">
+    <h1>Create a posting</h1>
+    <form action ="" method="post">
+        {% csrf_token %}
+        {% include 'allposts/form-template.html' %}
+        <button type="submit">Submit</button>
+
+    </form>
+</div>
+{% endblock%}

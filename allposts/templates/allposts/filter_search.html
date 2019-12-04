@@ -1,0 +1,26 @@
+{% extends 'allposts/base.html'%}
+
+{% block body %}
+    <div class="main2">
+        <h3>Filtered search<h3>
+        <table class="post_table" style="width:100%">
+      <tr id="post_table_header">
+        <th>Rim Model</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Seller name</th>
+        <th>Image</th>
+      </tr>
+      
+      
+        {% for listing in queryhit %}
+        <tr class="singlepost">
+            <td><a href="/allposts/{{listing.listing_id}}/">{{listing.get_rim_str}}</a></td>
+            <td>${{listing.price}}</td>
+            <td>{{listing.quantity}}</td>
+            <td>{{listing.seller_name}}</td>
+            <td><img src="{{listing.image}}" alt="tire image" style="width:px50;height:50px"></td>
+        {% endfor %}
+    </table>  
+    </div>
+{% endblock %}
